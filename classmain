@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+class Program {
+
+    public static void main(String[] args) {
+        MMM contract = new MMM();
+        Scanner in = new Scanner(System.in);
+        contract.setFML("Petr", "Vitalievich", in.nextLine());
+
+        contract.outputFML();
+    }
+}
+
+
+class MMM {
+
+    private String first_name;
+    private String last_name;
+    private String middle_name;
+    private String index;
+    private String address;
+    private int money;
+    private int period;
+
+    public void setFML(String first_name, String middle_name, String last_name) {
+
+        try {
+            this.first_name = first_name;
+            this.middle_name = middle_name;
+            this.last_name = last_name.substring(0,1).toUpperCase() + last_name.substring(1);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setIndex(String index) {
+        try {
+            this.index = index;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setAddress(String address) {
+        try {
+            this.address = address;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setMoney(int money) {
+        if (money > 0 && money <= 10000) {
+            try {
+                this.money = money;
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else {
+            System.out.println("This sum isn't real");
+        }
+    }
+
+    public void setPeriod(int period) {
+        if (period >= 0 || period < 60)  {
+            try {
+                this.period = period;
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else {
+            System.out.println("This period isn't real");
+        }
+    }
+
+    public void outputFML() {
+        System.out.println(this.first_name + " " + this.middle_name + " " + this.last_name);
+    }
+}
